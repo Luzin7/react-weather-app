@@ -1,4 +1,5 @@
 import React from 'react';
+import FavoriteWeathers from './components/FavoriteWeathers';
 import SearchedWeather from './components/SearchedWeather';
 import fetchWeather from './data/api';
 
@@ -8,6 +9,7 @@ export default class App extends React.Component {
     this.state = {
       localName: '',
       weatherData: null,
+      favoriteLocal: [],
       submited: false
     };
   }
@@ -21,6 +23,15 @@ export default class App extends React.Component {
     };
     // atualizando 'localName' com o valor da 'name'
     this.setState({ [name]: caps(value) });
+  };
+
+  addFavorite = () => {
+    const { weatherData } = this.state;
+
+    this.setState((prevstate) => ({
+      favoriteLocal: [...prevstate.favoriteLocal, weatherData]
+    }));
+    // this.setState({ favorite: weatherData });
   };
 
   // add um trycatch pra arrumar bug do site quberar quando não acha nada ou pesquisa vazio
@@ -51,6 +62,10 @@ export default class App extends React.Component {
             </section>
             <section className="city__weather">
               <SearchedWeather weatherData={weatherData} />
+              <button onClick={this.addFavorite} type="button">
+                Favorite
+              </button>
+              <FavoriteWeathers />
             </section>
           </div>
             )
