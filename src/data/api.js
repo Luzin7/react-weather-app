@@ -6,7 +6,7 @@ const fetchWeather = async (city) => {
     const data = await fetchRequest.json();
     // console.log(data.name);
     // console.log(data.weather[0].main);
-    // console.log(data.weather[0].description);
+    console.log(data.weather[0].description);
     console.log(data);
     return data;
   } catch (error) {
