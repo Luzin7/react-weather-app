@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      localName: '',
+      localName: 'Recife',
       weatherData: null,
       favoriteLocal: [],
       submited: false
@@ -31,7 +31,6 @@ export default class App extends React.Component {
     this.setState((prevstate) => ({
       favoriteLocal: [...prevstate.favoriteLocal, weatherData]
     }));
-    // this.setState({ favorite: weatherData });
   };
 
   // add um trycatch pra arrumar bug do site quberar quando não acha nada ou pesquisa vazio
@@ -43,7 +42,7 @@ export default class App extends React.Component {
 
   // revisar esse ternário aí
   render () {
-    const { weatherData, submited } = this.state;
+    const { weatherData, favoriteLocal, submited } = this.state;
     return (
       <div className="App">
         {submited
@@ -65,7 +64,7 @@ export default class App extends React.Component {
               <button onClick={this.addFavorite} type="button">
                 Favorite
               </button>
-              <FavoriteWeathers />
+              <FavoriteWeathers favoriteLocal={favoriteLocal} />
             </section>
           </div>
             )
@@ -76,6 +75,7 @@ export default class App extends React.Component {
               onChange={this.handleChange}
               name="localName"
               type="text"
+              placeholder="Recife"
             />
             <button onClick={this.fetchToData} type="submit">
               Search
