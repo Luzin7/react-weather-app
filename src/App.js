@@ -55,7 +55,7 @@ export default class App extends React.Component {
                 name="localName"
                 type="text"
               />
-              <button onClick={this.fetchToData} type="button">
+              <button onClick={this.fetchToData} type="submit">
                 Search
               </button>
             </section>
