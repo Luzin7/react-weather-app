@@ -1,9 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono:wght@300&family=Roboto:wght@100&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  background-color: #FEFBE7;
+  margin: 0;  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: darkslateblue;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
 }
+
+/* css > container { width: 80% e max-widht: 1200px}; */
