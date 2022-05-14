@@ -5,9 +5,20 @@ export default class FavoriteWeathers extends Component {
   render () {
     const { favoriteLocal } = this.props;
     return (
-      <div>
+      <div className="container">
         {favoriteLocal.map((favorite) => (
-          <h1 key={favorite.id}>{favorite.name}</h1>
+          <div key={favorite.id} className="favorite__box">
+            <div className="locale">
+              <h1>{favorite.name}</h1>
+              <span>{favorite.sys.country}</span>
+            </div>
+            <div className="temp__Info">
+              <h2>{`${favorite.main.temp.toFixed(0)}°`}</h2>
+            </div>
+            <div className="desc">
+              <p>{favorite.weather[0].description}</p>
+            </div>
+          </div>
         ))}
       </div>
     );
