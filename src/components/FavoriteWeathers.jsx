@@ -9,8 +9,7 @@ export default class FavoriteWeathers extends Component {
         {favoriteLocal.map((favorite) => (
           <div key={favorite.id} className="favorite__box">
             <div className="locale">
-              <h1>{favorite.name}</h1>
-              <span>{favorite.sys.country}</span>
+              <h1>{favorite.name} <span>{favorite.sys.country}</span></h1>
             </div>
             <div className="temp__Info">
               <h2>{`${favorite.main.temp.toFixed(0)}°`}</h2>

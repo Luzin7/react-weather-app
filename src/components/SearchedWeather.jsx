@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../style/searchedWeather/container.css';
+import '../style/searchedWeather/infoBox.css';
 
 export default class SearchedWeather extends Component {
   render () {
@@ -8,8 +10,9 @@ export default class SearchedWeather extends Component {
       <div className="container">
         <div className="info__box">
           <div className="locale">
-            <h1>{weatherData.name}</h1>
-            <span>{weatherData.sys.country}</span>
+            <h1>
+              {weatherData.name} <span>{weatherData.sys.country}</span>
+            </h1>
           </div>
           <div className="temp__Info">
             <h2>{`${weatherData.main.temp.toFixed(0)}°`}</h2>
