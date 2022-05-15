@@ -1,31 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono:wght@300&family=Roboto:wght@100&display=swap");
-
 :root {
   --bg-color: #fefbe7;
   --error-color: #f25f5c;
-  --warm-color: #f9ebc8;
-  --cold-color: #247ba0;
-  --btn-color: #a0bcc2;
-  --cardBG-color: #a0bcc2;
+  --warm-color: #ff9f96;
+  --cold-color: #a0bcc2;
+  --btn-color: #84a59d;
+  --cardBG-color: #247ba0;
 }
 
-body {
+.body {
   background-color: var(--bg-color);
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: 0.4s;
 }
 
-.error ::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--error-color);
-  opacity: 1; /* Firefox */
+.bg__error {
+  background-color: var(--error-color);
+  transition: 0.7s;
 }
 
 .warm {
-  color: var(--warm-color);
+  background-color: var(--warm-color);
 }
 
 .cold {
-  color: var(--cold-color);
+  background: var(--cold-color);
 }
