@@ -35,19 +35,28 @@ export default class App extends React.Component {
     }));
   };
 
-  // add um trycatch pra arrumar bug do site quberar quando não acha nada ou pesquisa vazio
+  // refatorar essa função
   fetchToData = async () => {
     const { localName } = this.state;
     const fetchInfo = await fetchWeather(localName);
-    const texto = document.querySelector('.search');
-    const bg = document.querySelector('.App');
+    const inputText = document.querySelector('.search');
+    const bg = document.querySelector('body');
     if (fetchInfo.cod === 200) {
       this.setState({ submited: true, weatherData: fetchInfo });
-      bg.classList.remove('error');
+      bg.classList.remove('bg__error');
     } else if (fetchInfo.cod !== 200) {
-      texto.placeholder = fetchInfo.message;
-      texto.value = '';
-      bg.classList.add('error');
+      inputText.placeholder = fetchInfo.message;
+      inputText.value = '';
+      bg.classList.add('bg__error');
+      bg.classList.remove('warm' && 'cold');
+    }
+    if (fetchInfo.main.temp > 24) {
+      bg.classList.add('warm');
+      bg.classList.remove('cold');
+    }
+    if (fetchInfo.main.temp < 24) {
+      bg.classList.add('cold');
+      bg.classList.remove('warm');
     }
   };
 
@@ -67,13 +76,21 @@ export default class App extends React.Component {
                 type="text"
                 placeholder="Tell me where..."
               />
-              <button className='button button__search' onClick={this.fetchToData} type="submit">
+              <button
+                className="button button__search"
+                onClick={this.fetchToData}
+                type="submit"
+              >
                 Search
               </button>
             </section>
             <section className="city__weather">
               <SearchedWeather weatherData={weatherData} />
-              <button className='button button__favorite' onClick={this.addFavorite} type="button">
+              <button
+                className="button button__favorite"
+                onClick={this.addFavorite}
+                type="button"
+              >
                 Favorite
               </button>
               <FavoriteWeathers favoriteLocal={favoriteLocal} />
@@ -81,7 +98,7 @@ export default class App extends React.Component {
           </div>
             )
           : (
-          <section className="search__city before">
+          <section className="search__city">
             <input
               className="search"
               onChange={this.handleChange}
@@ -89,7 +106,11 @@ export default class App extends React.Component {
               type="text"
               placeholder="Recife"
             />
-            <button className='button button__search' onClick={this.fetchToData} type="submit">
+            <button
+              className="button button__search"
+              onClick={this.fetchToData}
+              type="submit"
+            >
               Search
             </button>
           </section>
