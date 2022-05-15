@@ -1,14 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono:wght@300&family=Roboto:wght@100&display=swap");
 
-body {
-  background-color: #FEFBE7;
-  margin: 0;  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  text-align: center;
+:root {
+  --bg-color: #fefbe7;
+  --error-color: #f25f5c;
+  --warm-color: #f9ebc8;
+  --cold-color: #247ba0;
+  --btn-color: #a0bcc2;
+  --cardBG-color: #a0bcc2;
 }
 
-/* css > container { width: 80% e max-widht: 1200px}; */
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+.error ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--error-color);
+  opacity: 1; /* Firefox */
+}
+
+.warm {
+  color: var(--warm-color);
+}
+
+.cold {
+  color: var(--cold-color);
+}
