@@ -1,7 +1,7 @@
 .info__box {
   animation: cardAnimation .7s 2;
   display: flex;
-  background-color: var(--cardBG-color);
+  background-color: rgba(255, 255, 255, 0.25);
   flex-flow: column wrap;
   text-align: center;
   padding: 2rem;
