@@ -2,6 +2,8 @@ import React from 'react';
 import FavoriteWeathers from './components/FavoriteWeathers';
 import SearchedWeather from './components/SearchedWeather';
 import fetchWeather from './data/api';
+import './style/app/searchCity.css';
+import './style/app/button.css';
 
 export default class App extends React.Component {
   constructor () {
@@ -37,7 +39,16 @@ export default class App extends React.Component {
   fetchToData = async () => {
     const { localName } = this.state;
     const fetchInfo = await fetchWeather(localName);
-    this.setState({ submited: true, weatherData: fetchInfo });
+    const texto = document.querySelector('.search');
+    const bg = document.querySelector('.App');
+    if (fetchInfo.cod === 200) {
+      this.setState({ submited: true, weatherData: fetchInfo });
+      bg.classList.remove('error');
+    } else if (fetchInfo.cod !== 200) {
+      texto.placeholder = fetchInfo.message;
+      texto.value = '';
+      bg.classList.add('error');
+    }
   };
 
   // revisar esse ternário aí
@@ -54,14 +65,15 @@ export default class App extends React.Component {
                 onChange={this.handleChange}
                 name="localName"
                 type="text"
+                placeholder="Tell me where..."
               />
-              <button onClick={this.fetchToData} type="submit">
+              <button className='button button__search' onClick={this.fetchToData} type="submit">
                 Search
               </button>
             </section>
             <section className="city__weather">
               <SearchedWeather weatherData={weatherData} />
-              <button onClick={this.addFavorite} type="button">
+              <button className='button button__favorite' onClick={this.addFavorite} type="button">
                 Favorite
               </button>
               <FavoriteWeathers favoriteLocal={favoriteLocal} />
@@ -77,7 +89,7 @@ export default class App extends React.Component {
               type="text"
               placeholder="Recife"
             />
-            <button onClick={this.fetchToData} type="submit">
+            <button className='button button__search' onClick={this.fetchToData} type="submit">
               Search
             </button>
           </section>
