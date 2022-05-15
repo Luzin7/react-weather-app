@@ -11,11 +11,11 @@ export default class SearchedWeather extends Component {
         <div className="info__box">
           <div className="locale">
             <h1>
-              {weatherData.name} <span>{weatherData.sys.country}</span>
+              {weatherData.name}, <span>{weatherData.sys.country}</span>
             </h1>
           </div>
           <div className="temp__Info">
-            <h2>{`${weatherData.main.temp.toFixed(0)}°`}</h2>
+            <h2>{`${weatherData.main.temp.toFixed(0)}°c`}</h2>
           </div>
           <div className="desc">
             <p>{weatherData.weather[0].description}</p>
