@@ -12,7 +12,7 @@ export default class FavoriteWeathers extends Component {
               <h1>{favorite.name} <span>{favorite.sys.country}</span></h1>
             </div>
             <div className="temp__Info">
-              <h2>{`${favorite.main.temp.toFixed(0)}°`}</h2>
+              <h2>{`${favorite.main.temp.toFixed(0)}°c`}</h2>
             </div>
             <div className="desc">
               <p>{favorite.weather[0].description}</p>
