@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../style/searchedWeather/container.css';
 import '../style/searchedWeather/infoBox.css';
+import '../style/searchedWeather/tempoInfo.css';
+import '../style/searchedWeather/descriptionCard.css';
+import '../style/searchedWeather/localeInfo.css';
 
 export default class SearchedWeather extends Component {
   render () {
