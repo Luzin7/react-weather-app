@@ -1,19 +1,10 @@
 .header h1 {
-  animation: colorChange 7s infinite;
-  color: #a0bcc2;
+  color: var(--btn-color);
   font-weight: bold;
   text-align: center;
   font-size: 4em;
-  /* deslocamento-x | deslocamento-y | raio-de-desfoque | cor */
-  text-shadow: 1px 2px 1px #84a59d;
-}
-
-@keyframes colorChange {
-  70% {
-    color: #84a59d;
-    /* deslocamento-x | deslocamento-y | raio-de-desfoque | cor */
-    text-shadow: 1px 2px 0px #a0bcc2;
-  }
+  /* deslocamento-x | deslocamento-y | raio-de-desfoque | cor
+  text-shadow: 1px 2px 1px #ff9f96; */
 }
 
 @media screen and (max-width: 600px) {
