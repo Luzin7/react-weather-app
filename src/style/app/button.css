@@ -1,13 +1,36 @@
 .button {
+  animation: shake 20s infinite;
   color: var(--btn-color);
   font-weight: 700;
-  background-color: rgba(218, 229, 208, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
   appearance: none;
   border: none;
   outline: none;
   border-radius: 10px;
   border: none;
   box-shadow: 2px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 4px 8px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  transition: 0.4s;
+}
+
+@keyframes shake {
+  2% {
+    transform: rotate(1deg);
+  }
+  1% {
+    transform: rotate(-1deg);
+  }
+  0.7% {
+    transform: rotate(1deg);
+  }
+  0.1% {
+    transform: rotate(-1deg);
+  }
 }
 
 .button__search {
@@ -20,6 +43,11 @@
 .button__search:hover {
   box-shadow: 4px 8px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+}
+
+.button__search:active {
+  font-size: 17px;
+  transition: 0.1s;
 }
 
 @media screen and (max-width: 600px) {
