@@ -1,12 +1,16 @@
 .search__city {
   text-align: center;
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px 40px 0px;
+}
+
+.search__city ::placeholder {
+  color: white;
 }
 
 .search {
   width: 40%;
   padding: 10px;
-  color: var(--btn-color);
+  color: var(--text-color);
   font-size: 20px;
   appearance: none;
   border: none;
@@ -23,7 +27,7 @@
 }
 
 .search:focus {
-  color: #227ba2;
+  color: var(--text-color);
   background-color: rgba(255, 255, 255, 0.4);
   box-shadow: 4px 8px 0px rgba(0, 0, 0, 0.25);
   transition: 0.4s ease-out;
