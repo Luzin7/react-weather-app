@@ -3,7 +3,10 @@ import FavoriteWeathers from './components/FavoriteWeathers';
 import SearchedWeather from './components/SearchedWeather';
 import fetchWeather from './data/api';
 import './style/app/searchCity.css';
+import './style/app/weatherCity.css';
 import './style/app/button.css';
+import './style/app/buttonSearch.css';
+import './style/app/buttonFavorite.css';
 
 export default class App extends React.Component {
   constructor () {
@@ -14,6 +17,8 @@ export default class App extends React.Component {
       favoriteLocal: [],
       submited: false
     };
+    // Binda func removeFav
+    this.removeFav = this.removeFav.bind(this);
   }
 
   // Pegando o valor do target
@@ -34,6 +39,13 @@ export default class App extends React.Component {
       favoriteLocal: [...prevstate.favoriteLocal, weatherData]
     }));
   };
+
+  // Cria função pra tirar favorito
+  removeFav (fav) {
+    this.setState({
+      favoriteLocal: this.state.favoriteLocal.filter(el => el !== fav)
+    });
+  }
 
   // refatorar essa função
   fetchToData = async () => {
@@ -93,7 +105,7 @@ export default class App extends React.Component {
               >
                 Favorite
               </button>
-              <FavoriteWeathers favoriteLocal={favoriteLocal} />
+              <FavoriteWeathers removeFav={this.removeFav} favoriteLocal={favoriteLocal} />
             </section>
           </div>
             )
