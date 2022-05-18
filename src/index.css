@@ -1,10 +1,9 @@
 :root {
-  --bg-color: #fefbe7;
+  --bg-color: #2b9eb3;
   --error-color: #f25f5c;
-  --warm-color: #ff9f96;
-  --cold-color: #a0bcc2;
-  --btn-color: #84a59d;
-  --cardBG-color: #247ba0;
+  --warm-color: #ff6b6b;
+  --cold-color: #36aec4;
+  --text-color: white;
 }
 
 .body {
