@@ -1,0 +1,8 @@
+.container__fav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  flex-basis: 20%;
+  gap: 20px;
+}
