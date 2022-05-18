@@ -1,0 +1,11 @@
+#favorite__box {
+  animation: cardFavoriteAnimation 0.7s 1;
+  margin-bottom: 15px;
+}
+
+@keyframes cardFavoriteAnimation {
+  20% {
+    background-color: var(--text-color);
+    font-size: 102%;
+  }
+}
