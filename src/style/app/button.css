@@ -1,6 +1,6 @@
 .button {
-  animation: shake 20s infinite;
-  color: var(--btn-color);
+  animation: shake 1s 1;
+  color: var(--text-color);
   font-weight: 700;
   background-color: rgba(255, 255, 255, 0.4);
   appearance: none;
@@ -19,44 +19,27 @@
 }
 
 @keyframes shake {
-  2% {
-    transform: rotate(1deg);
+  20% {
+    color: var(--warm-color);
   }
-  1% {
-    transform: rotate(-1deg);
+  30% {
+    color: var(--cold-color);
   }
-  0.7% {
-    transform: rotate(1deg);
-  }
-  0.1% {
-    transform: rotate(-1deg);
-  }
-}
-
-.button__search {
-  font-size: 20px;
-  padding: 10px;
-  margin-left: 20px;
-  border-radius: 10px;
-  transition: 0.4s;
-}
-.button__search:hover {
-  box-shadow: 4px 8px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-}
-
-.button__search:active {
-  font-size: 17px;
-  transition: 0.1s;
 }
 
 @media screen and (max-width: 600px) {
+  .search__city {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
   .button__search {
     position: fixed;
     top: 90%;
-    left: 50%;
-    margin-left: -50px;
-    width: 100px;
+    margin: 0 5%;
+    width: 120px;
     height: 40px;
   }
 }
