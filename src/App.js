@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      localName: 'Recife',
+      localName: '',
       weatherData: null,
       favoriteLocal: [],
       submited: false
@@ -21,17 +21,19 @@ export default class App extends React.Component {
     this.removeFav = this.removeFav.bind(this);
   }
 
-  // Pegando o valor do target
+  // Pesquisando a/o cidade/local
   handleChange = ({ target }) => {
     // extraindo name e value de target
     const { name, value } = target;
+    // Deixando a primeira letra maíscula
     const caps = (str) => {
       return str.charAt(0).toUpperCase() + str.substr(1);
     };
-    // atualizando 'localName' com o valor da 'name'
+    // atualizando 'localName' com o valor do usuário
     this.setState({ [name]: caps(value) });
   };
 
+  // Add aos favoritos
   addFavorite = () => {
     const { weatherData } = this.state;
 
@@ -40,10 +42,11 @@ export default class App extends React.Component {
     }));
   };
 
-  // Cria função pra tirar favorito
+  // Tirar favoritos
   removeFav (fav) {
+    const { favoriteLocal } = this.state;
     this.setState({
-      favoriteLocal: this.state.favoriteLocal.filter(el => el !== fav)
+      favoriteLocal: favoriteLocal.filter((el) => el !== fav)
     });
   }
 
@@ -59,10 +62,10 @@ export default class App extends React.Component {
     } else if (fetchInfo.cod !== 200) {
       inputText.placeholder = fetchInfo.message;
       inputText.value = '';
+      bg.classList.remove('warm', 'cold');
       bg.classList.add('bg__error');
-      bg.classList.remove('warm' && 'cold');
     }
-    if (fetchInfo.main.temp > 24) {
+    if (fetchInfo.main.temp >= 24) {
       bg.classList.add('warm');
       bg.classList.remove('cold');
     }
@@ -72,6 +75,24 @@ export default class App extends React.Component {
     }
   };
 
+  sugestRandomNameCity = () => {
+    const names = [
+      'Japan',
+      'Baghdad',
+      'Berlin',
+      'Luxembourg',
+      'Moscow',
+      'Vienna',
+      'Afghanistan',
+      'Canada',
+      'North Korea',
+      'Brazil'
+    ];
+    const name = names[Math.ceil(Math.random() * (names.length - 1))];
+
+    return name;
+  };
+
   // revisar esse ternário aí
   render () {
     const { weatherData, favoriteLocal, submited } = this.state;
@@ -79,6 +100,7 @@ export default class App extends React.Component {
       <div className="App">
         {submited
           ? (
+          // Tela completa
           <div className="weather__app">
             <section className="search__city">
               <input
@@ -105,18 +127,22 @@ export default class App extends React.Component {
               >
                 Favorite
               </button>
-              <FavoriteWeathers removeFav={this.removeFav} favoriteLocal={favoriteLocal} />
+              <FavoriteWeathers
+                removeFav={this.removeFav}
+                favoriteLocal={favoriteLocal}
+              />
             </section>
           </div>
             )
           : (
+          // Tela inicial
           <section className="search__city">
             <input
               className="search"
               onChange={this.handleChange}
               name="localName"
               type="text"
-              placeholder="Recife"
+              placeholder={this.sugestRandomNameCity()}
             />
             <button
               className="button button__search"
