@@ -3,8 +3,27 @@
   font-weight: bold;
   text-align: center;
   font-size: 4em;
+  margin-top: 0px;
   /* deslocamento-x | deslocamento-y | raio-de-desfoque | cor
   text-shadow: 1px 2px 1px #ff9f96; */
+}
+
+.header h1::before {
+  content: "";
+  width: 50px;
+  height: 4px;
+  background: currentColor;
+  display: block;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+.header .gitLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 2em; */
+  margin: 1em 0em 0px 0px;
 }
 
 @media screen and (max-width: 600px) {
