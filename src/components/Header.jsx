@@ -24,7 +24,7 @@ export default class Header extends Component {
   render () {
     return (
       <div className='header'>
-        <a className='gitLogo' href="https://github.com/Luzin7" target="_blank" rel="noreferrer noopener"><img src={gitLogo} alt="Github Logo" /></a>
+        <a data-aos="zoom-in" className='gitLogo' href="https://github.com/Luzin7" target="_blank" rel="noreferrer noopener"><img src={gitLogo} alt="Github Logo" /></a>
         <h1>Weather App</h1>
       </div>
     );
