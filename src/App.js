@@ -9,7 +9,6 @@ import './style/app/weatherCity.css';
 import './style/app/button.css';
 import './style/app/buttonSearch.css';
 import './style/app/buttonFavorite.css';
-import './style/footer.css';
 
 export default class App extends React.Component {
   constructor () {
