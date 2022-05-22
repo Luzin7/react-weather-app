@@ -1,9 +1,26 @@
 :root {
   --bg-color: #2b9eb3;
   --error-color: #f25f5c;
-  --warm-color: #ffd07f;
+  --warm-color: #f68989;
   --cold-color: #a2d2ff;
   --text-color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 0px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: none; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: none; /* color of the scroll thumb */
+  border-radius: 0px; /* roundness of the scroll thumb */
 }
 
 .body {
@@ -12,6 +29,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 0.4s;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .bg__error {
