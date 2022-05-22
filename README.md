@@ -3,7 +3,7 @@
 <a href="https://luzin7.github.io/react-weather-app/" >Execute a aplicação clicando aqui!<a>
 
 ## Contexto
-Este projeto foi desenvolvido como prática da biblioteca React.JS. Sendo o meu segundo projeto feito com a ferramenta, foi desenvolvido uma aplicação sobre clima(s), no qual é possível pesquisar cidades, visualizar sua temperatura e descrição sobre o tempo, além de ser possível favoritá-las. Tudo isso de forma dinâmica, usando formulários e o estado da aplicação.
+Este projeto foi desenvolvido como prática da biblioteca React.JS. Sendo o meu segundo projeto feito com a ferramenta, foi desenvolvido uma aplicação sobre clima(s), no qual é possível pesquisar cidades, visualizar sua temperatura e descrição sobre o tempo, além de adicionar aos seus favoritos. Tudo isso de forma dinâmica, usando formulários e o estado da aplicação.
 
 ## Técnologias usadas
 
