@@ -7,3 +7,10 @@
   gap: 20px;
   width: 100%;
 }
+
+@media screen and (max-width: 600px){
+  .container__fav{
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 2em 0em 0em 0em;
+  }
+}

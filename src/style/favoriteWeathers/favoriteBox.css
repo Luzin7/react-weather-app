@@ -1,6 +1,6 @@
 #favorite__box {
   animation: cardFavoriteAnimation 0.7s 1;
-  margin-bottom: 15px;
+  margin: 15px;
 
   transition: all 0.4s;
 }
@@ -18,6 +18,7 @@
   font-size: 6em;
 }
 
+
 @keyframes cardFavoriteAnimation {
   20% {
     background-color: var(--text-color);
@@ -30,7 +31,7 @@
   display: flex;
   flex-flow: column wrap;
   text-align: center;
-  padding: 2rem;
+  padding: 2em;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   cursor: pointer;
@@ -45,3 +46,14 @@
   color: var(--text-color);
   margin-bottom: 1em;
 }
+
+  @media screen and (max-width: 600px){
+    #favorite__box .locale{
+      font-size: 1.25em;
+      margin-bottom: -15px;
+    }
+    #favorite__box:hover{
+      padding: 2rem;
+      margin: 2em;
+    }
+  }
