@@ -1,12 +1,15 @@
 import React from 'react';
+import Aos from 'aos';
 import FavoriteWeathers from './components/FavoriteWeathers';
 import SearchedWeather from './components/SearchedWeather';
 import fetchWeather from './data/api';
+import 'aos/dist/aos.css';
 import './style/app/searchCity.css';
 import './style/app/weatherCity.css';
 import './style/app/button.css';
 import './style/app/buttonSearch.css';
 import './style/app/buttonFavorite.css';
+import './style/footer.css';
 
 export default class App extends React.Component {
   constructor () {
@@ -19,6 +22,10 @@ export default class App extends React.Component {
     };
     // Binda func removeFav
     this.removeFav = this.removeFav.bind(this);
+  }
+
+  componentDidMount () {
+    Aos.init({ duration: 700 });
   }
 
   // Pesquisando a/o cidade/local
@@ -36,6 +43,22 @@ export default class App extends React.Component {
   // Add aos favoritos
   addFavorite = () => {
     const { weatherData } = this.state;
+
+    const date = new Date();
+
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+
+    const savedTime = `Saved at ${hours}:${minutes}, ${day}/${month}/${year}`;
+
+    const savedTimes = [];
+    savedTimes.push(savedTime);
+
+    weatherData.savedTime = savedTimes[savedTimes.length - 1];
 
     this.setState((prevstate) => ({
       favoriteLocal: [...prevstate.favoriteLocal, weatherData]
@@ -56,6 +79,7 @@ export default class App extends React.Component {
     const fetchInfo = await fetchWeather(localName);
     const inputText = document.querySelector('.search');
     const bg = document.querySelector('body');
+
     if (fetchInfo.cod === 200) {
       this.setState({ submited: true, weatherData: fetchInfo });
       bg.classList.remove('bg__error');
@@ -65,6 +89,7 @@ export default class App extends React.Component {
       bg.classList.remove('warm', 'cold');
       bg.classList.add('bg__error');
     }
+
     if (fetchInfo.main.temp >= 24) {
       bg.classList.add('warm');
       bg.classList.remove('cold');
@@ -91,6 +116,9 @@ export default class App extends React.Component {
     const name = names[Math.ceil(Math.random() * (names.length - 1))];
 
     return name;
+  };
+
+  t = () => {
   };
 
   // revisar esse ternário aí
@@ -121,11 +149,14 @@ export default class App extends React.Component {
             <section className="city__weather">
               <SearchedWeather weatherData={weatherData} />
               <button
+              id='favorite'
                 className="button button__favorite"
                 onClick={this.addFavorite}
+                onDoubleClick={this.t}
                 type="button"
               >
-                Favorite
+                <a href="#favorite__box">
+                Favorite</a>
               </button>
               <FavoriteWeathers
                 removeFav={this.removeFav}
@@ -135,7 +166,7 @@ export default class App extends React.Component {
           </div>
             )
           : (
-          // Tela inicial
+        // Tela inicial
           <section className="search__city">
             <input
               className="search"
@@ -143,6 +174,7 @@ export default class App extends React.Component {
               name="localName"
               type="text"
               placeholder={this.sugestRandomNameCity()}
+              data-aos="fade-right"
             />
             <button
               className="button button__search"
