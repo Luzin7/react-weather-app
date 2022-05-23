@@ -19,9 +19,14 @@ export default class SearchedWeather extends Component {
           </div>
           <div className="desc">
             <p>{weatherData.weather[0].description}</p>
+            <img
+              src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+              alt="ilustration of temp"
+            />
           </div>
           <div className="temp__Info">
             <h2>{`${weatherData.main.temp.toFixed(0)}°c`}</h2>
+            <p data-aos="zoom-out">{`Sensation: ${weatherData.main.feels_like.toFixed(0)}°c`}</p>
           </div>
         </div>
       </div>
