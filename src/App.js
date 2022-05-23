@@ -27,7 +27,7 @@ export default class App extends React.Component {
     Aos.init({ duration: 700 });
   }
 
-  // Pesquisando a/o cidade/local
+  // Pesquisando a cidade
   handleChange = ({ target }) => {
     // extraindo name e value de target
     const { name, value } = target;
@@ -39,8 +39,7 @@ export default class App extends React.Component {
     this.setState({ [name]: caps(value) });
   };
 
-  // Add aos favoritos
-  addFavorite = () => {
+  getDate = () => {
     const { weatherData } = this.state;
 
     const date = new Date();
@@ -58,6 +57,13 @@ export default class App extends React.Component {
     savedTimes.push(savedTime);
 
     weatherData.savedTime = savedTimes[savedTimes.length - 1];
+  };
+
+  // Add aos favoritos
+  addFavorite = () => {
+    const { weatherData } = this.state;
+
+    this.getDate();
 
     this.setState((prevstate) => ({
       favoriteLocal: [...prevstate.favoriteLocal, weatherData]
@@ -72,10 +78,14 @@ export default class App extends React.Component {
     });
   }
 
-  // refatorar essa função
   fetchToData = async () => {
     const { localName } = this.state;
     const fetchInfo = await fetchWeather(localName);
+    this.validateFetch(fetchInfo);
+    this.bgTemp(fetchInfo);
+  };
+
+  validateFetch = (fetchInfo) => {
     const inputText = document.querySelector('.search');
     const bg = document.querySelector('body');
 
@@ -88,12 +98,15 @@ export default class App extends React.Component {
       bg.classList.remove('warm', 'cold');
       bg.classList.add('bg__error');
     }
+  };
 
-    if (fetchInfo.main.temp >= 24) {
+  bgTemp = (weatherInfo) => {
+    const bg = document.querySelector('body');
+    if (weatherInfo.main.temp >= 24) {
       bg.classList.add('warm');
       bg.classList.remove('cold');
     }
-    if (fetchInfo.main.temp < 24) {
+    if (weatherInfo.main.temp < 24) {
       bg.classList.add('cold');
       bg.classList.remove('warm');
     }
@@ -110,17 +123,14 @@ export default class App extends React.Component {
       'Afghanistan',
       'Canada',
       'North Korea',
-      'Brazil'
+      'Brazil',
+      'Pernambuco'
     ];
     const name = names[Math.ceil(Math.random() * (names.length - 1))];
 
     return name;
   };
 
-  t = () => {
-  };
-
-  // revisar esse ternário aí
   render () {
     const { weatherData, favoriteLocal, submited } = this.state;
     return (
