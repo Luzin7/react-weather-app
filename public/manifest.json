@@ -1,6 +1,6 @@
 {
   "short_name": "Weather App",
-  "name": "Website created for search the weather about some cities",
+  "name": "Website created for search the weather about some cities.",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#36aec4",
