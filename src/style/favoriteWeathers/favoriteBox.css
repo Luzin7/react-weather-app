@@ -5,20 +5,6 @@
   transition: all 0.4s;
 }
 
-#favorite__box .locale{
-  font-size: 1.5em;
-  margin-bottom: -20px;
-}
-
-#favorite__box .desc{
-  font-size: 1em;
-}
-
-#favorite__box .temp__Info h2 {
-  font-size: 6em;
-}
-
-
 @keyframes cardFavoriteAnimation {
   20% {
     background-color: var(--text-color);
@@ -42,18 +28,32 @@
   background-color: var(--text-color);
 }
 
+#favorite__box .locale {
+  font-size: 1.5em;
+  margin-bottom: -20px;
+}
+
+#favorite__box .desc {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+#favorite__box .temp__Info h2 {
+  font-size: 6em;
+}
+
 .savedTime {
   color: var(--text-color);
   margin-bottom: 1em;
 }
 
-  @media screen and (max-width: 600px){
-    #favorite__box .locale{
-      font-size: 1.25em;
-      margin-bottom: -15px;
-    }
-    #favorite__box:hover{
-      padding: 2rem;
-      margin: 2em;
-    }
+@media screen and (max-width: 600px) {
+  #favorite__box .locale {
+    font-size: 1.25em;
+    margin-bottom: -15px;
   }
+  #favorite__box:hover {
+    padding: 2rem;
+    margin: 2em;
+  }
+}
