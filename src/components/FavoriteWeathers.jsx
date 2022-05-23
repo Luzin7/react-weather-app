@@ -14,7 +14,6 @@ export default class FavoriteWeathers extends Component {
     return (
       <div className="container__fav">
         {favoriteLocal.map((favorite) => (
-          // Ao clicar a funcao é chamada por uma arrow function
           <div
             onClick={() => {
               this.removeFav(favorite);
